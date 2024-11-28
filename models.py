@@ -5,21 +5,6 @@ from flask_migrate import Migrate
 
 db = SQLAlchemy()
 
-
-def create_app_db():
-    app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///your_database.db'  # Zde upravte cestu k databázi
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-    db.init_app(app)  # Zaregistrujte SQLAlchemy s aplikací
-
-    # Další konfigurace nebo registrace modrých tisků, pokud je potřeba
-    
-    with app.app_context():
-        db.create_all()  # Vytvoří tabulky, pokud ještě neexistují
-
-    return app
-
 # Definice modelů
 class Concert(db.Model):
     id_concert = db.Column(db.Integer, primary_key=True)
@@ -42,12 +27,3 @@ class About(db.Model):
 
     def __repr__(self):
         return f'<About {self.title}>'
-
-# Vytvoření aplikace
-app = create_app_db()
-
-
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
