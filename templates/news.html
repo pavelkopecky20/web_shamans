@@ -3,7 +3,7 @@
 {% block content %}
 <h1 class="headline">Novinky u nás v kapele</h1>
 <div class="text">
-    {% for news in get_news %}
+    {% for news in news_list %}
         <div class="news-item">
             <h2 class="news-title">{{ news.title }}</h2>
             <p class="news-text">{{ news.content }}</p>
