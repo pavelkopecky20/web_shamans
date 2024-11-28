@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="headline">Novinky u nás v kapele</h1>
+<div class="text">
+    {% for news in get_news %}
+        <div class="news-item">
+            <h2 class="news-title">{{ news.title }}</h2>
+            <p class="news-text">{{ news.content }}</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

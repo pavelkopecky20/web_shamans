@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+    <div class="concerts-page">   
+        <h1>Nadcházející koncerty</h1>
+        
+        <table class="concert-table">
+            <thead>
+                <tr>
+                    <th>Datum</th>
+                    <th>Čas</th>
+                    <th>Místo</th>
+                    <th>Událost</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for concert in concerts %}
+                <tr>
+                    <td>{{ concert['date'] }}</td>
+                    <td>{{ concert['time'] }}</td>
+                    <td>{{ concert['venue'] }}</td>
+                    <td><a href="{{ concert['event_link'] }}" target="_blank">Více informací</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+{% endblock %}
+

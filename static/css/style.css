@@ -1,0 +1,196 @@
+/* Globální pozadí pro všechny stránky */
+body {
+    background-image: url('../images/background.jpg');
+    background-attachment: fixed; /* Pozadí zůstane fixní při scrollování */
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: rgb(62, 11, 11);
+    margin: 0; /* Odstranění defaultního marginu */
+    padding-top: 8px; /* Odsazení podle výšky fixní navigační lišty */
+
+}
+
+
+
+
+
+/* Fixní odsazení obsahu kvůli fixní navigační liště */
+.content {
+    padding-top: 70px; /* Odsazení podle výšky fixní navigační lišty */
+}
+
+/* Fixní navigační lišta */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10; /* Navigační lišta zůstává nad obsahem */
+    height: 70px; /* Výška navigační lišty */
+    background-color: #333; /* Zajištění viditelnosti */
+}
+
+/* Specifické stylování pro obrázek kapely na hlavní stránce */
+.main-page .band-photo {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.main-page .band-photo img {
+    background-image: url('../images/background.jpg');
+    max-width: 80%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+
+.band-photo-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Pokrývá celou výšku okna */
+    overflow: hidden; /* Skryje jakýkoli přesahující obsah */
+}
+
+.band-photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Vyplní celý kontejner */
+    object-fit: cover; /* Zachová proporce a vyplní celý kontejner */
+    object-position: center; /* Zajistí centrování obrázku */
+    max-width: none; /* Ujistí se, že nedochází k omezení šířky */
+    max-height: none; /* Ujistí se, že nedochází k omezení výšky */
+}
+
+
+
+.overlay-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px; /* Základní odsazení */
+    padding-left: 40px; /* Odsazení textu zleva, upravte hodnotu dle potřeby */
+    background-color: rgba(0, 0, 0, 0.5); /* Poloprůhledné pozadí */
+    color: rgb(207, 196, 196);
+    font-size: 30px;
+    text-align: left; /* Zarovnání textu doleva */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Zarovnání textu vlevo */
+    justify-content: flex-start;
+}
+
+
+
+
+/* Stylování tabulky na stránce koncertů */
+.concert-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 20px; /* Zvýšení velikosti písma */
+    font-family: 'Arial', sans-serif; /* Vysoce čitelný font */
+}
+
+.concert-table th, .concert-table td {
+    padding: 14px 17px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Oddělující čáry mezi řádky */
+}
+
+.concert-table th {
+    background-color: #333;
+    color: white; /* Kontrastní barva pro lepší čitelnost */
+}
+
+.concert-table tr:hover {
+    background-color: #f2f2f2; /* Zvýraznění řádku při přejetí myší */
+}
+
+.concert-table a {
+    color: #1a73e8; /* Odkazy s výraznou barvou */
+    text-decoration: none;
+}
+
+.concert-table a:hover {
+    text-decoration: underline;
+}
+
+
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.container.content {
+    flex: 1; /* Flexibilní prostor pro obsah stránky */
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: auto; /* Umístění footeru dole */
+    width: 100%;
+}
+
+
+/* Stylování TEXTU AKTUALIT */
+
+.headline {
+    text-align: center;
+}
+
+.text {
+    background-color: #333;
+    font-size: 1.6em;
+    color: #cdbcbc; /* Tmavá barva textu */
+    text-align: justify;
+    margin: 1%;
+    padding: 2%;
+  
+
+
+}
+
+/* Zvětšení písma v navigační liště */
+.navbar-nav .nav-link {
+    font-size: 20px; /* Změňte tuto hodnotu dle potřeby */
+}
+
+.read-more {
+    font-size: 0.5em; /* Velikost písma 80% z běžné velikosti */
+    color: #6163d4; /* Nebo jakoukoli jinou barvu, kterou potřebujete */
+    text-decoration: underline; /* Podtržení, pokud chcete */
+}
+
+
+.img-fluid {
+    position: absolute;
+    max-height: 250px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.gallery-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}

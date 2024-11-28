@@ -1,0 +1,9 @@
+<form method="POST">
+    <label for="title">Název novinky</label>
+    <input type="text" name="title" value="{{ news_item.title }}" required>
+
+    <label for="content">Obsah novinky</label>
+    <textarea name="content" required>{{ news_item.content }}</textarea>
+
+    <button type="submit">Uložit změny</button>
+</form>

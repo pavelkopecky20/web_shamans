@@ -1,0 +1,17 @@
+
+
+
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="headline">Tohle je story naší kapely</h1>
+
+    {% for a in about_info %}
+    <div class="text">
+        <h1>{{ a.title }}</h1> 
+        <p>{{ a.content }}</p>
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
+

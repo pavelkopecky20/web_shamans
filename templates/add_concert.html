@@ -1,0 +1,15 @@
+<form action="{{ url_for('add_concert') }}" method="post">
+    <label for="date">Datum:</label>
+    <input type="date" name="date" required>
+    
+    <label for="time">Čas:</label>
+    <input type="time" name="time" required>
+    
+    <label for="venue">Místo:</label>
+    <input type="text" name="venue" required>
+    
+    <label for="event_link">Odkaz na událost:</label>
+    <input type="url" name="event_link" required>
+    
+    <button type="submit">Přidat koncert</button>
+</form>

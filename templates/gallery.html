@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container text-center">
+    
+    <div class="text">Fotogalerie The Shamans</div>
+    <div class="row">
+        <!-- Pro každý obrázek přidáme div s třídou 'col-md-4', což je Bootstrap grid -->
+        {% for image in images %}
+        <div class="col-md-4 mb-4">
+            <a href="{{ url_for('static', filename='images/gallery/' + image) }}" data-toggle="lightbox" data-gallery="gallery">
+                <img src="{{ url_for('static', filename='images/gallery/' + image) }}" class="img-fluid" alt="image">
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+
+
