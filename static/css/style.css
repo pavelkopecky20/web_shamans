@@ -194,3 +194,23 @@ footer {
     justify-content: center;
     flex-wrap: wrap;
 }
+
+
+
+
+/* Obrázky v galerii */
+.gallery-image {
+    width: 100%; /* Obrázek se přizpůsobí šířce sloupce */
+    height: auto; /* Zachování poměru stran */
+    border-radius: 5px; /* Volitelné: zaoblené rohy */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Volitelné: stín kolem obrázku */
+}
+
+/* Kontejnery sloupců mají mezi sebou mezery */
+.row .col {
+    padding: 0 15px; /* Přidání vnitřního odsazení */
+}
+
+.container {
+    max-width: 1200px; /* Volitelné: omezení šířky galerie */
+}
