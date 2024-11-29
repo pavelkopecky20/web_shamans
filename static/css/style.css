@@ -214,3 +214,19 @@ footer {
 .container {
     max-width: 1200px; /* Volitelné: omezení šířky galerie */
 }
+
+
+
+/* Obrázky budou automaticky přizpůsobeny sloupcům */
+img {
+    display: block; /* Zajistí správné vykreslení obrázku */
+    width: 100%; /* Obrázek se přizpůsobí šířce sloupce */
+    height: auto; /* Zachování poměru stran */
+    object-fit: cover; /* Zajistí hezčí oříznutí obrázku (volitelné) */
+    margin: 0 auto; /* Obrázek je vždy vystředěný */
+}
+
+/* Mezera mezi řádky a sloupci */
+.row.g-3 {
+    gap: 15px; /* Nastaví jednotnou mezeru mezi obrázky */
+}
