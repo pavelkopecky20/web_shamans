@@ -14,7 +14,7 @@ def contact():
         message = request.form['message']
 
         # Vytvoření a odeslání e-mailu
-        msg = Message(f"Message from {name}", sender=email, recipients=['your_email@gmail.com'])
+        msg = Message(f"Message from {name}", sender=email, recipients=['band.shamans@gmail.com'])
         msg.body = message
         mail.send(msg)  # Použití inicializovaného objektu mail
         flash("Zpráva byla odeslána!")
