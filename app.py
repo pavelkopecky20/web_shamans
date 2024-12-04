@@ -3,11 +3,14 @@ from flask_mail import Mail
 from models import db
 from routes import main_routes, admin_routes, contact_routes
 
+# Globální inicializace Mail
+mail = Mail()
+
 def create_app():
     app = Flask(__name__)
     app.config.from_object('config.Config')  # Načtení konfigurace
     db.init_app(app)
-    Mail(app)
+    mail.init_app(app)  # Připojení Mail k aplikaci
 
     with app.app_context():
         db.create_all()  # Inicializace databáze

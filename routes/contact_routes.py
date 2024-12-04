@@ -2,7 +2,7 @@
 
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_mail import Message
-from app import Mail
+from app import mail  # Import inicializovaného objektu mail
 
 bp = Blueprint('contact', __name__)
 
@@ -13,9 +13,10 @@ def contact():
         email = request.form['email']
         message = request.form['message']
 
+        # Vytvoření a odeslání e-mailu
         msg = Message(f"Message from {name}", sender=email, recipients=['your_email@gmail.com'])
         msg.body = message
-        Mail.send(msg)
+        mail.send(msg)  # Použití inicializovaného objektu mail
         flash("Zpráva byla odeslána!")
         return redirect(url_for('contact.contact'))
     return render_template('contact.html')
