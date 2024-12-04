@@ -15,7 +15,7 @@ def contact():
 
         msg = Message(f"Message from {name}", sender=email, recipients=['your_email@gmail.com'])
         msg.body = message
-        mail.send(msg)
+        Mail.send(msg)
         flash("Zpráva byla odeslána!")
         return redirect(url_for('contact.contact'))
     return render_template('contact.html')
