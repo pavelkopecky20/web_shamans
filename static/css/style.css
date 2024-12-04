@@ -189,22 +189,32 @@ footer {
     cursor: pointer;
 }
 
+
+
+
+/* Styl pro galerii */
 .gallery-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    margin-top: 20px; /* Mezera nahoře */
+    padding: 10px; /* Vnitřní okraje galerie */
+}
+
+.gallery-container .gallery-image {
+    width: 100%; /* Obrázek zaplní sloupec */
+    height: auto; /* Zachová poměr stran */
+    border: 2px solid #ddd; /* Jemný okraj */
+    border-radius: 5px; /* Zaoblení rohů */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Jemný stín */
+    transition: transform 0.2s ease-in-out; /* Animace při najetí myší */
+}
+
+.gallery-container .gallery-image:hover {
+    transform: scale(1.05); /* Zvětšení při najetí */
+    border-color: #007bff; /* Barva okraje při najetí */
 }
 
 
 
 
-/* Obrázky v galerii */
-.gallery-image {
-    width: 100%; /* Obrázek se přizpůsobí šířce sloupce */
-    height: auto; /* Zachování poměru stran */
-    border-radius: 5px; /* Volitelné: zaoblené rohy */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Volitelné: stín kolem obrázku */
-}
 
 /* Kontejnery sloupců mají mezi sebou mezery */
 .row .col {
@@ -230,3 +240,8 @@ img {
 .row.g-3 {
     gap: 15px; /* Nastaví jednotnou mezeru mezi obrázky */
 }
+
+
+
+
+

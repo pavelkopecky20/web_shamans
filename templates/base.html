@@ -3,27 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Vlastní styly -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
     <title>The Shamans</title>
- 
-
-        <!-- Bootstrap Lightbox CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
-
-    <!-- Bootstrap Lightbox JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
-
-    <script>
-    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-        event.preventDefault();
-        $(this).ekkoLightbox();
-    });
-</script>
-
-
 </head>
 <body>
+    <!-- Navigace -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">The Shamans</a>
@@ -42,15 +32,20 @@
         </div>
     </nav>
 
+    <!-- Obsah -->
     <div class="container content">
         {% block content %}{% endblock %}
     </div>
 
+    <!-- Footer -->
     <footer class="bg-dark text-white mt-4 p-4 text-center">
         <p>Sledujte nás: 
             <a href="https://www.facebook.com/profile.php?id=61556915277905" class="text-white" target="_blank">Facebook</a> | 
             <a href="https://www.youtube.com/watch?v=-Xt-ZxsoBwg" class="text-white" target="_blank">YouTube</a>
         </p>
     </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
