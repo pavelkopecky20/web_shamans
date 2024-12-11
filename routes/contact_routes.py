@@ -4,6 +4,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_mail import Message
 from app import Mail
 
+
 bp = Blueprint('contact', __name__)
 
 @bp.route('/contact', methods=['GET', 'POST'])

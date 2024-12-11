@@ -1,0 +1,293 @@
+# http://127.0.0.1:5000/admin/news - TADY SE EDITUJE
+# http://127.0.0.1:5000/admin/news/edit/1 - pokud víme id novinky (z databáze), můžeme ji přímo editovat i tady
+ 
+# http://127.0.0.1:5000/admin/concerts/add  - koncerty
+
+admin_routes.py
+----------------------------------------
+from flask import Blueprint, render_template, request, redirect, url_for, flash
+from models import db, News, Concert
+
+bp = Blueprint('admin', __name__)
+
+@bp.route('/news', methods=['GET', 'POST'])
+def admin_news():
+    if request.method == 'POST':
+        title = request.form['title']
+        content = request.form['content']
+        if not title or not content:
+            flash("Prosím vyplňte všechny údaje.")
+            return redirect(url_for('admin.admin_news'))
+        new_news = News(title=title, content=content)
+        db.session.add(new_news)
+        db.session.commit()
+        flash("Novinka přidána.")
+        return redirect(url_for('admin.admin_news'))
+    news_list = News.query.order_by(News.date_posted.desc()).all()
+    return render_template('admin_news.html', news_list=news_list)
+
+
+@bp.route('/news/edit/<int:id>', methods=['POST'])
+def edit_news(id):
+    news = News.query.get_or_404(id)
+    title = request.form.get('title')
+    content = request.form.get('content')
+    if not title or not content:
+        flash("Nadpis a obsah jsou povinné!", "error")
+        return redirect(url_for('admin.admin_news'))
+    news.title = title
+    news.content = content
+    db.session.commit()
+    flash("Novinka byla upravena.", "success")
+    return redirect(url_for('admin.admin_news'))
+
+
+from datetime import datetime
+
+@bp.route('/concerts/add', methods=['GET', 'POST'])
+def add_concert():
+    if request.method == 'POST':
+        try:
+            # Získání hodnot z formuláře
+            date = request.form.get('date')
+            time = request.form.get('time')
+            venue = request.form.get('venue')
+            event_link = request.form.get('event_link')
+            
+            # Převod řetězců na objekty date a time
+            date_obj = datetime.strptime(date, "%Y-%m-%d").date()
+            time_obj = datetime.strptime(time, "%H:%M").time()
+            
+            # Kontrola, zda jsou všechna povinná pole vyplněná
+            if not date_obj or not time_obj or not venue:
+                flash("Prosím vyplňte všechny povinné údaje.")
+                return redirect(url_for('admin.add_concert'))
+
+            # Vytvoření nového koncertu
+            new_concert = Concert(date=date_obj, time=time_obj, venue=venue, event_link=event_link)
+            db.session.add(new_concert)
+            db.session.commit()
+            flash("Koncert byl úspěšně přidán.")
+            return redirect(url_for('admin.add_concert'))
+        
+        except ValueError:
+            flash("Špatný formát data nebo času.", "error")
+            return redirect(url_for('admin.add_concert'))
+
+    return render_template('add_concert.html')
+
+
+add_concert.html
+----------------------------------------
+<form action="{{ url_for('admin.add_concert') }}" method="post">  <!-- Oprava zde -->
+
+    <label for="date">Datum:</label>
+    <input type="date" name="date" required>
+    
+    <label for="time">Čas:</label>
+    <input type="time" name="time" required>
+    
+    <label for="venue">Místo:</label>
+    <input type="text" name="venue" required>
+    
+    <label for="event_link">Odkaz na událost:</label>
+    <input type="url" name="event_link" required>
+    
+    <button type="submit">Přidat koncert</button>
+</form>
+
+
+
+app.py
+---------------------
+from flask import Flask
+from flask_mail import Mail
+from models import db
+from routes import main_routes, admin_routes, contact_routes
+
+# Globální inicializace Mail
+mail = Mail()
+
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object('config.Config')  # Načtení konfigurace
+    db.init_app(app)
+    mail.init_app(app)  # Připojení Mail k aplikaci
+
+    with app.app_context():
+        db.create_all()  # Inicializace databáze
+
+    # Registrace blueprintů
+    app.register_blueprint(main_routes.bp)
+    app.register_blueprint(admin_routes.bp, url_prefix='/admin')
+    app.register_blueprint(contact_routes.bp)
+
+    return app
+
+if __name__ == '__main__':
+    app = create_app()
+    app.run(debug=True)
+
+
+-----------------------------------
+
+# http://127.0.0.1:5000/admin/news - TADY SE EDITUJE
+# http://127.0.0.1:5000/admin/news/edit/1 - pokud víme id novinky (z databáze), můžeme ji přímo editovat i tady
+ 
+# http://127.0.0.1:5000/admin/concerts/add  - koncerty
+
+
+from flask import Blueprint, render_template, request, redirect, url_for, flash
+from models import db, News, Concert
+
+bp = Blueprint('admin', __name__)
+
+@bp.route('/news', methods=['GET', 'POST'])
+def admin_news():
+    if request.method == 'POST':
+        title = request.form['title']
+        content = request.form['content']
+        if not title or not content:
+            flash("Prosím vyplňte všechny údaje.")
+            return redirect(url_for('admin.admin_news'))
+        new_news = News(title=title, content=content)
+        db.session.add(new_news)
+        db.session.commit()
+        flash("Novinka přidána.")
+        return redirect(url_for('admin.admin_news'))
+    news_list = News.query.order_by(News.date_posted.desc()).all()
+    return render_template('admin_news.html', news_list=news_list)
+
+
+@bp.route('/news/edit/<int:id>', methods=['POST'])
+def edit_news(id):
+    news = News.query.get_or_404(id)
+    title = request.form.get('title')
+    content = request.form.get('content')
+    if not title or not content:
+        flash("Nadpis a obsah jsou povinné!", "error")
+        return redirect(url_for('admin.admin_news'))
+    news.title = title
+    news.content = content
+    db.session.commit()
+    flash("Novinka byla upravena.", "success")
+    return redirect(url_for('admin.admin_news'))
+
+
+from datetime import datetime
+
+@bp.route('/concerts/add', methods=['GET', 'POST'])
+def add_concert():
+    if request.method == 'POST':
+        try:
+            # Získání hodnot z formuláře
+            date = request.form.get('date')
+            time = request.form.get('time')
+            venue = request.form.get('venue')
+            event_link = request.form.get('event_link')
+            
+            # Převod řetězců na objekty date a time
+            date_obj = datetime.strptime(date, "%Y-%m-%d").date()
+            time_obj = datetime.strptime(time, "%H:%M").time()
+            
+            # Kontrola, zda jsou všechna povinná pole vyplněná
+            if not date_obj or not time_obj or not venue:
+                flash("Prosím vyplňte všechny povinné údaje.")
+                return redirect(url_for('admin.add_concert'))
+
+            # Vytvoření nového koncertu
+            new_concert = Concert(date=date_obj, time=time_obj, venue=venue, event_link=event_link)
+            db.session.add(new_concert)
+            db.session.commit()
+            flash("Koncert byl úspěšně přidán.")
+            return redirect(url_for('admin.add_concert'))
+        
+        except ValueError:
+            flash("Špatný formát data nebo času.", "error")
+            return redirect(url_for('admin.add_concert'))
+
+    return render_template('add_concert.html')
+------------------------------
+
+ze starého commitu admin_route.py
+
+# http://127.0.0.1:5000/admin/news - TADY SE EDITUJE
+# http://127.0.0.1:5000/admin/news/edit/1 - pokud víme id novinky (z databáze), můžeme ji přímo editovat i tady
+ 
+# http://127.0.0.1:5000/admin/concerts/add  - koncerty
+
+
+from flask import Blueprint, render_template, request, redirect, url_for, flash
+from models import db, News, Concert
+
+bp = Blueprint('admin', __name__)
+
+@bp.route('/news', methods=['GET', 'POST'])
+def admin_news():
+    if request.method == 'POST':
+        title = request.form['title']
+        content = request.form['content']
+        if not title or not content:
+            flash("Prosím vyplňte všechny údaje.")
+            return redirect(url_for('admin.admin_news'))
+        new_news = News(title=title, content=content)
+        db.session.add(new_news)
+        db.session.commit()
+        flash("Novinka přidána.")
+        return redirect(url_for('admin.admin_news'))
+    news_list = News.query.order_by(News.date_posted.desc()).all()
+    return render_template('admin_news.html', news_list=news_list)
+
+
+@bp.route('/news/edit/<int:id>', methods=['POST'])
+def edit_news(id):
+    news = News.query.get_or_404(id)
+    title = request.form.get('title')
+    content = request.form.get('content')
+    if not title or not content:
+        flash("Nadpis a obsah jsou povinné!", "error")
+        return redirect(url_for('admin.admin_news'))
+    news.title = title
+    news.content = content
+    db.session.commit()
+    flash("Novinka byla upravena.", "success")
+    return redirect(url_for('admin.admin_news'))
+
+
+from datetime import datetime
+
+@bp.route('/concerts/add', methods=['GET', 'POST'])
+def add_concert():
+    if request.method == 'POST':
+        try:
+            # Získání hodnot z formuláře
+            date = request.form.get('date')
+            time = request.form.get('time')
+            venue = request.form.get('venue')
+            event_link = request.form.get('event_link')
+            
+            # Převod řetězců na objekty date a time
+            date_obj = datetime.strptime(date, "%Y-%m-%d").date()
+            time_obj = datetime.strptime(time, "%H:%M").time()
+            
+            # Kontrola, zda jsou všechna povinná pole vyplněná
+            if not date_obj or not time_obj or not venue:
+                flash("Prosím vyplňte všechny povinné údaje.")
+                return redirect(url_for('admin.add_concert'))
+
+            # Vytvoření nového koncertu
+            new_concert = Concert(date=date_obj, time=time_obj, venue=venue, event_link=event_link)
+            db.session.add(new_concert)
+            db.session.commit()
+            flash("Koncert byl úspěšně přidán.")
+            return redirect(url_for('admin.add_concert'))
+        
+        except ValueError:
+            flash("Špatný formát data nebo času.", "error")
+            return redirect(url_for('admin.add_concert'))
+
+    return render_template('add_concert.html')
+
+
+
+

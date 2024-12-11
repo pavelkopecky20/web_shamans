@@ -3,31 +3,25 @@
 {% block content %}
 <div class="text-center">
     <h1>Vítejte na stránkách The Shamans</h1>
-
-    {% if upcoming_concert %}
-    <h2>Nejbližší koncert:
-        {{ upcoming_concert['formatted_date'] }} <a href="{{ url_for('concerts') }}"> {{ upcoming_concert['venue'] }} </a>
-    </h2>
-{% else %}
-    <h2>Připravujeme koncerty</h2>
-{% endif %}
-
-   <!-- Kontejner s obrázkem a textem přes obrázek -->
-
-   <div class="band-photo-container">
-    <img src="{{ url_for('static', filename='images/band_04.jpg') }}" class="band-photo" alt="kapela The Shamans">
-    <div class="overlay-text">
     
+    {% if concert %}
+        <h2>Nejbližší koncert:
+            {{ concert.formatted_date }} <a href="{{ url_for('main.concerts') }}">{{ concert.venue }}</a>
+     
+        </h2>
+    {% else %}
+        <h2>Připravujeme koncerty</h2>
+    {% endif %}
+
+    <!-- Kontejner s obrázkem a textem přes obrázek -->
+    <div class="band-photo-container">
+        <img src="{{ url_for('static', filename='images/band_04.jpg') }}" class="band-photo" alt="kapela The Shamans">
+        <div class="overlay-text">
             <div class="news-item">
-                <h2>{{ news_homepage.title }}</h2>
-                <p>{{ news_homepage.content }}</p>           
+                <h3>{{ news_homepage.title }}</h3>
+                <h4><p>{{ news_homepage.content }}</p></h4>
             </div>
-      
+        </div>
     </div>
 </div>
-
 {% endblock %}
-
-
-
-

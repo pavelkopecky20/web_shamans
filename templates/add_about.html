@@ -1,18 +1,43 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Přidat informace o kapele</h1>
+<h1>Správa sekce O kapele</h1>
 
-<form method="POST">
-    <div class="form-group">
-        <label for="title">Nadpis</label>
-        <input type="text" id="title" name="title" class="form-control" required>
-    </div>
-    <div class="form-group">
-        <label for="content">Obsah</label>
-        <textarea id="content" name="content" class="form-control" rows="5" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Přidat</button>
-</form>
+<!-- Formulář pro přidání nového článku -->
+<section>
+    <h2>Přidat nový článek</h2>
+    <form method="POST" action="{{ url_for('admin.admin_about') }}">
+        <div>
+            <label for="title">Nadpis:</label>
+            <input type="text" name="title" id="title" required>
+        </div>
+        <div>
+            <label for="content">Obsah:</label>
+            <textarea name="content" id="content" rows="5" required></textarea>
+        </div>
+        <div>
+            <button type="submit">Přidat článek</button>
+        </div>
+    </form>
+</section>
 
+<!-- Seznam existujících článků s možností editace -->
+<section>
+    <h2>Existující články</h2>
+    {% for about in about_list %}
+    <form method="POST" action="{{ url_for('admin.edit_about', id=about.id_about) }}">
+        <div>
+            <label for="title_{{ about.id_about }}">Nadpis:</label>
+            <input type="text" name="title" id="title_{{ about.id_about }}" value="{{ about.title }}" required>
+        </div>
+        <div>
+            <label for="content_{{ about.id_about }}">Obsah:</label>
+            <textarea name="content" id="content_{{ about.id_about }}" rows="5" required>{{ about.content }}</textarea>
+        </div>
+        <div>
+            <button type="submit">Uložit změny</button>
+        </div>
+    </form>
+    {% endfor %}
+</section>
 {% endblock %}

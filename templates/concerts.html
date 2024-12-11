@@ -16,7 +16,32 @@
                 </tr>
             </thead>
             <tbody>
-                {% for concert in concerts %}
+                {% for concert in concerts_new %}
+                <tr>
+                    <td>{{ concert['date'] }}</td>
+                    <td>{{ concert['time'] }}</td>
+                    <td>{{ concert['venue'] }}</td>
+                    <td><a href="{{ concert['event_link'] }}" target="_blank">Více informací</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="concerts-page">   
+        <h1>Uplynulé koncerty</h1>
+        
+        <table class="concert-table">
+            <thead>
+                <tr>
+                    <th>Datum</th>
+                    <th>Čas</th>
+                    <th>Místo</th>
+                    <th>Událost</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for concert in concerts_old %}
                 <tr>
                     <td>{{ concert['date'] }}</td>
                     <td>{{ concert['time'] }}</td>

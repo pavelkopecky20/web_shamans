@@ -245,3 +245,37 @@ img {
 
 
 
+
+
+
+/* Globální styl pro text */
+body {
+    background-image: url('../images/background.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff; /* Světlý text */
+    margin: 0;
+    padding-top: 8px;
+}
+
+/* Ohraničení textu v tabulce */
+.concert-table th, .concert-table td {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Jemný stín kolem textu */
+    color: #fff; /* Světlý text */
+}
+
+/* Styl nadpisů */
+h1 {
+    color: #fff; /* Světlý text */
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.9); /* Výraznější stín pro větší text */
+}
+
+
+/* Styl nadpisů */
+h2 {
+    color: #4d1212; /* Světlý text */
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2); /* Výraznější stín pro větší text */
+}
+

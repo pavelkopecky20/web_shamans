@@ -3,14 +3,16 @@
 from flask import Blueprint, render_template
 from models import Concert, News, About
 import os
+from datetime import datetime
 
 bp = Blueprint('main', __name__)
 
 @bp.route('/')
 def index():
-    upcoming_concert = Concert.query.order_by(Concert.date).first()
+    concert = Concert.query.order_by(Concert.date).filter(Concert.date >= datetime.now().date()).first()
     news_homepage = News.query.order_by(News.date_posted.desc()).first()
-    return render_template('index.html', concert=upcoming_concert, news_homepage=news_homepage)
+    return render_template('index.html', concert=concert, news_homepage=news_homepage)
+
     
 @bp.route('/news')
 def news():
@@ -24,8 +26,10 @@ def about():
 
 @bp.route('/concerts')
 def concerts():
-    concerts = Concert.query.all()
-    return render_template('concerts.html', concerts=concerts) 
+#    concerts = Concert.query.all()
+    concerts_new = Concert.query.order_by(Concert.date).filter(Concert.date >= datetime.now().date())
+    concerts_old = Concert.query.order_by(Concert.date).filter(Concert.date < datetime.now().date())
+    return render_template('concerts.html', concerts_new=concerts_new, concerts_old=concerts_old) 
 
 @bp.route('/gallery')
 def gallery():
