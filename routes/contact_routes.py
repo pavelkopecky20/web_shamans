@@ -2,7 +2,8 @@
 
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_mail import Message
-from app import Mail
+from app import mail
+
 
 
 bp = Blueprint('contact', __name__)
