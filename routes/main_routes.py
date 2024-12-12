@@ -11,7 +11,18 @@ bp = Blueprint('main', __name__)
 def index():
     concert = Concert.query.order_by(Concert.date).filter(Concert.date >= datetime.now().date()).first()
     news_homepage = News.query.order_by(News.date_posted.desc()).first()
-    return render_template('index.html', concert=concert, news_homepage=news_homepage)
+    
+    # Zkrácení textu na max. 200 znaků
+    max_length = 200
+    is_truncated = False
+    news_content = news_homepage.content
+
+    if len(news_content) > max_length:
+        news_content = news_content[:max_length] + "..."
+        is_truncated = True
+    
+    return render_template('index.html', concert=concert, news_homepage=news_homepage, news_content=news_content, 
+        is_truncated=is_truncated)
 
     
 @bp.route('/news')

@@ -279,3 +279,30 @@ h2 {
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2); /* Výraznější stín pro větší text */
 }
 
+
+
+/* Text obsahu novinky */
+.news-item p {
+    line-height: 1.6; /* Příjemná čitelnost */
+    margin: 0; /* Odstraní mezery kolem textu */
+}
+
+/* Stylování odkazu jako textu */
+.read-more-link {
+    text-decoration: none; /* Odstranění podtržení */
+    font-size: 20px; /* Velikost textu */
+    font-family: 'Georgia', serif; /* Elegantní styl písma */
+    color: #007bff; /* Modrá barva */
+    font-weight: bold; /* Tučný text */
+    transition: color 0.3s ease; /* Plynulý přechod barvy při hoveru */
+    margin-left: 10px; /* Mírné odsazení od textu */
+    margin-left: auto; /* Tlačítko přesune na pravý okraj */
+    display: block; /* Tlačítko bude blokovým prvkem */
+    text-align: right; /* Zarovná tlačítko vpravo */
+}
+
+/* Hover efekt odkazu */
+.read-more-link:hover {
+    color: #0056b3; /* Tmavší modrá barva při hoveru */
+    text-decoration: underline; /* Zvýraznění podtržením při hoveru */
+}
