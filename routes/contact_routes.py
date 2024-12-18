@@ -15,9 +15,10 @@ def contact():
         email = request.form['email']
         message = request.form['message']
 
-        msg = Message(f"Message from {name}", sender=email, recipients=['your_email@gmail.com'])
+        # Vytvoření a odeslání e-mailu
+        msg = Message(f"Message from {name}", sender=email, recipients=['band.shamans@gmail.com'])
         msg.body = message
-        mail.send(msg)
+        mail.send(msg)  # Použití inicializovaného objektu mail
         flash("Zpráva byla odeslána!")
         return redirect(url_for('contact.contact'))
     return render_template('contact.html')

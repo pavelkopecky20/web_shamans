@@ -10,6 +10,9 @@ load_dotenv()  # Načtení proměnných z .env
 # Inicializace globálního objektu Mail
 mail = Mail()
 
+# Globální inicializace Mail
+mail = Mail()
+
 def create_app():
     app = Flask(__name__)
     app.config.from_object('config.Config')  # Načtení konfigurace
