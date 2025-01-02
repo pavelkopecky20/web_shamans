@@ -1,17 +1,10 @@
 from flask import Flask
-from flask_mail import Mail
-from models import db
+from extensions import mail, db
 from routes import main_routes, admin_routes, contact_routes
 from dotenv import load_dotenv
 import os
 
 load_dotenv()  # Načtení proměnných z .env
-  
-# Inicializace globálního objektu Mail
-mail = Mail()
-
-# Globální inicializace Mail
-mail = Mail()
 
 def create_app():
     app = Flask(__name__)
@@ -31,11 +24,6 @@ def create_app():
 
     return app
 
-
 if __name__ == '__main__':
     app = create_app()
     app.run(debug=True)
-
-
-# dodělat:
-# na index.html zobrazovat jen 2 řádky novinek, čtěte více...

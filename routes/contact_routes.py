@@ -1,10 +1,6 @@
-# routy pro odesílání emailů 
-
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_mail import Message
-from app import mail
-
-
+from extensions import mail  # Import z extensions.py
 
 bp = Blueprint('contact', __name__)
 
@@ -18,7 +14,7 @@ def contact():
         # Vytvoření a odeslání e-mailu
         msg = Message(f"Message from {name}", sender=email, recipients=['band.shamans@gmail.com'])
         msg.body = message
-        mail.send(msg)  # Použití inicializovaného objektu mail
+        mail.send(msg)
         flash("Zpráva byla odeslána!")
         return redirect(url_for('contact.contact'))
     return render_template('contact.html')
