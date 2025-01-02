@@ -2,7 +2,7 @@
 # http://127.0.0.1:5000/admin/news/edit/1 - pokud víme id novinky (z databáze), můžeme ji přímo editovat i tady
  
 # http://127.0.0.1:5000/admin/concerts/add  - koncerty
-
+# http://127.0.0.1:5000/admin/about
 
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from models import db, News, Concert, About
