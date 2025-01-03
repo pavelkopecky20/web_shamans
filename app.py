@@ -1,29 +1,17 @@
 from flask import Flask
-from extensions import mail, db
-from routes import main_routes, admin_routes, contact_routes
-from dotenv import load_dotenv
-import os
+from extensions import db, mail
+from routes.main_routes import bp as main_routes  # Import blueprintu
 
-load_dotenv()  # Načtení proměnných z .env
+app = Flask(__name__)
 
-def create_app():
-    app = Flask(__name__)
-    app.config.from_object('config.Config')  # Načtení konfigurace
+app.config.from_object('config.Config')  # Načte konfiguraci
 
-    # Inicializace databáze a Flask-Mail
-    db.init_app(app)
-    mail.init_app(app)
+# Inicializace rozšíření
+db.init_app(app)
+mail.init_app(app)
 
-    with app.app_context():
-        db.create_all()  # Inicializace databáze
-
-    # Registrace blueprintů
-    app.register_blueprint(main_routes.bp)
-    app.register_blueprint(admin_routes.bp, url_prefix='/admin')
-    app.register_blueprint(contact_routes.bp)
-
-    return app
+# Registrace blueprintu
+app.register_blueprint(main_routes)
 
 if __name__ == '__main__':
-    app = create_app()
     app.run(debug=True)
