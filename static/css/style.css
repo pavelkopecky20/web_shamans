@@ -306,3 +306,68 @@ h2 {
     color: #0056b3; /* Tmavší modrá barva při hoveru */
     text-decoration: underline; /* Zvýraznění podtržením při hoveru */
 }
+
+/* Styl pro mobilní menu */
+.navbar-collapse {
+    background-color: #222; /* Tmavě šedé pozadí */
+    padding: 1rem; /* Přidání vnitřního odsazení */
+    border-radius: 5px; /* Jemně zaoblené rohy */
+    position: absolute; /* Poloha absolutně, aby se drželo vpravo */
+    left: 0;: auto; /* Zarovnáno k pravému okraji */
+    right: 0; /* Zarovnáno k pravému okraji */
+    top: 70px; /* Aby bylo pod navigační lištou */
+    width: auto; /* Délka se přizpůsobí obsahu */
+    z-index: 100; /* Ujistíme se, že je menu nad ostatním obsahem */
+}
+
+/* Pro mobilní zařízení (max-width: 768px) */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        position: absolute;
+        right: auto;
+        right: 0;
+        background-color: #222; /* Pozadí zůstane i pro mobilní zařízení */
+        width: auto;
+        max-width: 100%; /* Maximální šířka se přizpůsobí obrazovce */
+    }
+}
+
+/* Pro střední zařízení (tablety, mezi 768px a 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .navbar-collapse {
+        position: absolute; /* Menu je stále absolutně pozicováno */
+        background-color: #222; /* Pozadí zůstane i pro střední zařízení */
+        padding: 1rem; /* Padding pro vnitřní odsazení */
+        max-width: 300px; /* Omezíme šířku menu */
+        top: 70px; /* Aby bylo pod lištou */
+        right: auto; /* Zarovnáno k pravému okraji */
+        right: 0; /* Zarovnáno k pravému okraji */
+        width: auto; /* Délka se přizpůsobí obsahu */
+        z-index: 100; /* Zajistí, že menu je nad ostatním obsahem */
+        display: block; /* Menu bude blokovým prvkem pro lepší zarovnání */
+    }
+}
+
+/* Pro desktop (min-width: 1024px) */
+@media (min-width: 1024px) {
+    .navbar-collapse {
+        position: static; /* Menu se stane normálním blokovým elementem */
+        background-color: transparent; /* Bez pozadí pro desktop */
+        max-width: none; /* Vypne maximální šířku na desktopu */
+        width: auto; /* Nastaví šířku podle obsahu */
+        padding: 0; /* Zruší padding na desktopu */
+    }
+}
+
+/* Styl pro odkazy v mobilním menu */
+.navbar-nav .nav-link {
+    color: #fff; /* Bílá barva textu */
+    margin: 0.5rem 0; /* Prostor mezi odkazy */
+    text-align: center; /* Vycentrovaný text */
+}
+
+/* Hover efekt pro odkazy */
+.navbar-nav .nav-link:hover {
+    background-color: #444; /* Tmavší šedá při přejetí */
+    border-radius: 3px; /* Zaoblené rohy pro efekt */
+}
