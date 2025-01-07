@@ -1,0 +1,16 @@
+zapomněl jsi do FTP nahrát favicon.ico 😉 
+
+Failed to load resource: the server responded with a status of 404 ()
+
+a jestli nechceš, aby ti to otvíralo ty stránky z menu v nové kartě, tak odstraň z toho <a> "target=_blank"
+
+
+a je hezký, jak se ti to menu přepne když to okno zmenšíš na to vyjížděcí 😉 akorát mu dej nějaké pozadí 😉
+
+je super jak máš koncerty provázaný na facebook 🙂
+
+když použiješ toto, tak máš hezké ikonky i pro sociální sítě i pro cokoli, co chceš dát na web 😉 
+https://fontawesome.com/
+fontawesome.com
+
+ta animace v galerii je hekzá!
