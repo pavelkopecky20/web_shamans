@@ -47,3 +47,7 @@ def gallery():
     image_folder = os.path.join('static', 'images', 'gallery')
     images = [f for f in os.listdir(image_folder) if f.endswith(('jpg', 'jpeg', 'png', 'gif'))]   
     return render_template('gallery.html', images=images)
+
+@bp.route('/contact')
+def contact():
+    return render_template('contact.html')
