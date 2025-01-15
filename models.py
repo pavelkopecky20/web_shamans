@@ -1,9 +1,9 @@
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy     # objektově-relační mapování
 from datetime import datetime
 
-db = SQLAlchemy()
+db = SQLAlchemy()       # napojí se pak do hlavního souboru app.py
     
-class Concert(db.Model):
+class Concert(db.Model):        # Tato třída je tabulkou v db. V tabulce každý řádek odpovídá jednomu koncertu
     id_concert = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.Date, nullable=False)
     time = db.Column(db.Time, nullable=False)
@@ -12,7 +12,7 @@ class Concert(db.Model):
 
     @property
     def formatted_date(self):
-        return self.date.strftime('%d.%m.%Y')  # Formátujte dle potřeby
+        return self.date.strftime('%d.%m.%Y')  # Formátování (převod) datumu na čitelný formát
 
 class News(db.Model):
     id_news = db.Column(db.Integer, primary_key=True)

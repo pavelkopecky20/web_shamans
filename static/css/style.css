@@ -371,3 +371,29 @@ h2 {
     background-color: #444; /* Tmavší šedá při přejetí */
     border-radius: 3px; /* Zaoblené rohy pro efekt */
 }
+
+
+
+
+/* Kontejner pro video */
+.video-wrapper {
+    width: 100%;
+    max-width: 800px; /* Maximální šířka videa */
+    aspect-ratio: 16 / 9; /* Udržení správného poměru stran */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    margin-top: 40px; /* Vzdálenost od předchozího obsahu */
+    margin-bottom: 40px; /* Vzdálenost na spodní okraj */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Styl pro iframe (video) */
+.video-wrapper iframe  {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 12px;
+}

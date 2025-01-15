@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}       <!-- dědění od base.html. Zdědí hlavičku, patičku (head, footer, navigační lištu, menu..) -->
 
-{% block content %}
+{% block content %}             <!-- šablona má vlastní contect, ne ten zděděný -->
 <div class="text-center">
     <h1>Vítejte na stránkách The Shamans</h1>
     
@@ -14,10 +14,10 @@
     {% endif %}
 
     <!-- Kontejner s obrázkem a textem přes obrázek -->
+
     <div class="band-photo-container">
         <img src="{{ url_for('static', filename='images/band_04.jpg') }}" class="band-photo" alt="kapela The Shamans">
         <div class="overlay-text">
-
             <div class="news-item">
                 <h3>{{ news_homepage.title }}</h3>
                 <p>{{ news_content }}</p>
@@ -25,10 +25,13 @@
                     <a href="{{ url_for('main.news') }}" class="read-more-link">Čtěte více</a>
                 {% endif %}
             </div>
-            
-
-               
         </div>
     </div>
+    
+    <!-- Kontejner pro video -->
+    <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/XXolhwziPkA" allowfullscreen></iframe>
+    </div>
+                       
 </div>
 {% endblock %}
