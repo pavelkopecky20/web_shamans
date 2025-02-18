@@ -51,6 +51,8 @@ body {
 html, body {
     height: 100%;
     margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -428,3 +430,19 @@ h2 {
     height: 315px; /* Standardní výška YouTube videa, můžeš upravit */
     border: none;
 }
+
+.video-wrapper-video {   /* slouží jen pro šablonu video.html */
+    left: 10%;
+    width: 100%; /* Přizpůsob velikost podle potřeby */
+    margin: 50px;
+    max-width: 600px;
+}
+
+
+.video-container {      /* slouží jen pro šablonu video.html */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Zarovná videa na střed */
+    gap: 20px; /* Mezera mezi videi */
+}
+

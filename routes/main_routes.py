@@ -51,3 +51,7 @@ def gallery():
 @bp.route('/contact')
 def contact():
     return render_template('contact.html')
+
+@bp.route('/video')
+def video():
+    return render_template('video.html')

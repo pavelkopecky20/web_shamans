@@ -1,0 +1,19 @@
+{% extends 'base.html' %}  <!-- Dědění od base.html -->
+
+{% block content %}
+<h1>Podívejte se na videa z koncertů a ze zkušebny</h1>
+
+<!-- Kontejner pro videa -->
+<div class="videos-container">
+
+    <div class="video-wrapper-video">
+        <iframe src="https://www.youtube.com/embed/XXolhwziPkA" allowfullscreen></iframe>
+    </div>
+    
+    <div class="video-wrapper-video">
+        <iframe src="https://www.youtube.com/embed/-Xt-ZxsoBwg" allowfullscreen></iframe>
+    </div>
+
+</div>
+
+{% endblock %}
