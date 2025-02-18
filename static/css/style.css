@@ -321,6 +321,24 @@ h2 {
     }
 }
 
+
+@media (max-width: 768px) {
+    .band-photo-container {
+        height: auto; /* Umožní přizpůsobení výšky na mobilu */
+    }
+
+    .overlay-text {
+        font-size: 1.2em; /* Menší text na mobilu */
+        padding: 15px;
+        background-color: rgba(0, 0, 0, 0.3); /* Zesvětlení overlay */
+        width: 90%;
+    }
+}
+
+
+
+
+
 /* Pro střední zařízení (tablety, mezi 768px a 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
     .navbar-collapse {
