@@ -396,3 +396,35 @@ h2 {
     background: linear-gradient(rgba(205, 52, 25, 0), rgb(138, 134, 134));
     z-index: 0; /* Ujistí se, že gradient bude pod obrázkem a interaktivními prvky */
 }
+
+
+
+
+
+
+.band-photo-container {
+    position: relative; /* Umožní umístit video absolutně uvnitř tohoto kontejneru */
+    width: 100%;
+    margin: auto;
+}
+
+.band-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.video-wrapper {
+    position: absolute;
+    top: 55%; /* Posune video doprostřed obrázku */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Vycentrování */
+    width: 80%; /* Přizpůsob velikost podle potřeby */
+    max-width: 600px;
+}
+
+.video-wrapper iframe {
+    width: 100%;
+    height: 315px; /* Standardní výška YouTube videa, můžeš upravit */
+    border: none;
+}
