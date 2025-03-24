@@ -4,6 +4,9 @@
 # http://127.0.0.1:5000/admin/concerts/add  - koncerty
 # http://127.0.0.1:5000/admin/about
 
+# http://127.0.0.1:5000/admin/concerts/edit/<id> - editace koncertů
+
+
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from models import db, News, Concert, About
 from datetime import datetime
@@ -71,6 +74,34 @@ def add_concert():
             return redirect(url_for('admin.add_concert'))
 
     return render_template('add_concert.html')
+
+@bp.route('/concerts/edit/<int:id>', methods=['GET', 'POST'])
+def edit_concert(id):
+    concert = Concert.query.get_or_404(id)
+    if request.method == 'POST':
+        date = request.form.get('date')
+        time = request.form.get('time')
+        time = time[:5]  # Uloží jen první 5 znaků ve formátu HH:MM
+        venue = request.form.get('venue')
+        event_link = request.form.get('event_link')
+
+        if not date or not time or not venue:
+            flash("Prosím vyplňte všechny povinné údaje.")
+            return redirect(url_for('admin.edit_concert', id=id))
+        
+        concert.date = datetime.strptime(date, "%Y-%m-%d").date()
+        concert.time = datetime.strptime(time, "%H:%M").time()
+        concert.venue = venue
+        concert.event_link = event_link
+        
+        db.session.commit()
+        flash("Koncert byl úspěšně upraven.")
+        return redirect(url_for('admin.add_concert'))
+    
+    return render_template('edit_concert.html', concert=concert)
+
+
+
 
 
 @bp.route('/about', methods=['GET', 'POST'])

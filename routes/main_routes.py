@@ -11,7 +11,8 @@ bp = Blueprint('main', __name__)    # objekt Blueprintu. __name__ říká Flasku
 def index():            # funkce se zavolá, když uživatel navštíví adresu
     concert = Concert.query.order_by(Concert.date).filter(Concert.date >= datetime.now().date()).first()    # dotaz na db - aktuální koncert
     news_homepage = News.query.order_by(News.date_posted.desc()).first()        # dotaz na db - aktuální novinka
-    
+  
+
     # Zkrácení textu na max. 200 znaků
     max_length = 200
     is_truncated = False        # zda byl text zprávy zkrácen 
@@ -37,10 +38,10 @@ def about():
 
 @bp.route('/concerts')
 def concerts():
-#    concerts = Concert.query.all()
-    concerts_new = Concert.query.order_by(Concert.date).filter(Concert.date >= datetime.now().date())
-    concerts_old = Concert.query.order_by(Concert.date).filter(Concert.date < datetime.now().date())
-    return render_template('concerts.html', concerts_new=concerts_new, concerts_old=concerts_old) 
+    concerts_new = Concert.query.filter(Concert.date >= datetime.now().date()).order_by(Concert.date.asc()).all()
+    concerts_old = Concert.query.filter(Concert.date < datetime.now().date()).order_by(Concert.date.desc()).all()
+    return render_template('concerts.html', concerts_new=concerts_new, concerts_old=concerts_old)
+
 
 @bp.route('/gallery')
 def gallery():
