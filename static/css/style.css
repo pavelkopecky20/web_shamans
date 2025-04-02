@@ -327,21 +327,10 @@ h1, h3 {
 }
 
 /* Pro mobilní zařízení (max-width: 768px) */
-@media (max-width: 768px) {
-    .navbar-collapse {
-        position: absolute;
-        right: auto;
-        right: 0;
-        background-color: #222; /* Pozadí zůstane i pro mobilní zařízení */
-        width: auto;
-        max-width: 100%; /* Maximální šířka se přizpůsobí obrazovce */
-    }
-}
-
 
 @media (max-width: 768px) {
     .band-photo-container {
-        height: auto; /* Umožní přizpůsobení výšky na mobilu */
+        height: 100vh; /* Umožní přizpůsobení výšky na mobilu */
     }
 
     .overlay-text {
@@ -351,6 +340,27 @@ h1, h3 {
         width: 90%;
     }
 }
+
+
+
+@media (max-width: 768px) {
+    .band-photo-container {
+            height: 100vh; /* Umožní přizpůsobení výšky na mobilu */
+        }
+    
+        .overlay-text {
+            font-size: 1.2em; /* Menší text na mobilu */
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.3); /* Zesvětlení overlay */
+            width: 90%;
+        }
+    }
+
+    .overlay-text {
+        font-size: 1.2em; /* Menší text na mobilu */
+        padding: 15px;
+        background-color: rgba(0, 0, 0, 0.3); /* Zesvětlení overlay */
+       }
 
 
 
