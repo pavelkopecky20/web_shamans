@@ -2,8 +2,8 @@
 
 {% block content %}             <!-- šablona má vlastní contect, ne ten zděděný -->
 <div class="text-center">
-    <h1>Vítejte na stránkách The Shamans</h1>
-    
+    <h1>The Shamans</h1> <span class="description">grunge/stoner/psychedelic-rock</span>
+</div>    
     {% if concert %}
         <h2>Nejbližší koncert:
             {{ concert.formatted_date }} <a href="{{ url_for('main.concerts') }}">{{ concert.venue }}</a>

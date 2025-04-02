@@ -8,10 +8,9 @@
     {% for a in about %}
     <div class="text">
         <h1>{{ a.title }}</h1> 
-        <p>{{ a.content }}</p>
+        <p>{{ a.content.replace("\n", "<br>") | safe }}</p>
         </div>
     {% endfor %}
 
 {% endblock %}
-
 

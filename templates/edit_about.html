@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Upravit článek - About{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Upravit článek - About</h2>
+    
+    <form action="{{ url_for('admin.edit_about', id=about.id) }}" method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label">Nadpis</label>
+            <input type="text" class="form-control" id="title" name="title" value="{{ about.title }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="content" class="form-label">Obsah</label>
+            <textarea class="form-control" id="content" name="content" rows="6" required>{{ about.content }}</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Uložit změny</button>
+        <a href="{{ url_for('admin.admin_about') }}" class="btn btn-secondary">Zpět</a>
+    </form>
+</div>
+{% endblock %}

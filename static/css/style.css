@@ -256,17 +256,34 @@ img {
 h1 {
     color: #fff; /* Světlý text */
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.9); /* Výraznější stín pro větší text */
-}
+    margin-right: 20px;
+    }
 
 
 h2 {
-    color: #ad1e1e; /* Světlý text */
+    color: #ce6666; /* Světlý text */
     text-shadow: 
         -1px -1px 2px rgba(0, 0, 0, 0.5),
          1px -1px 2px rgba(0, 0, 0, 0.5),
         -1px  1px 2px rgba(0, 0, 0, 0.5),
-         1px  1px 2px rgba(0, 0, 0, 0.5); 
+         2px  2px 2px rgba(0, 0, 0, 0.5); 
 }
+
+
+h1, h3 {
+    display: inline-block;
+}
+
+.description{
+    margin-left: 10px;
+    font-size: 30px;
+    display: inline-block;
+    color: #9095d4 ;/* Světlý text */
+    text-shadow: 
+        -1px -1px 2px rgba(0, 0, 0, 0.5),
+         1px -1px 2px rgba(0, 0, 0, 0.5),
+        -1px  1px 2px rgba(0, 0, 0, 0.5),
+         2px  px 2px rgba(0, 0, 0, 0.5); }
 
 
 
