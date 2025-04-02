@@ -3,7 +3,7 @@
 {% block content %}             <!-- šablona má vlastní contect, ne ten zděděný -->
 <div class="text-center">
     <h1>The Shamans</h1> <span class="description">grunge/stoner/psychedelic-rock</span>
-</div>    
+  
     {% if concert %}
         <h2>Nejbližší koncert:
             {{ concert.formatted_date }} <a href="{{ url_for('main.concerts') }}">{{ concert.venue }}</a>
@@ -12,7 +12,7 @@
     {% else %}
         <h2>Připravujeme koncerty</h2>
     {% endif %}
-
+</div>  
     <!-- Kontejner s obrázkem a textem přes obrázek -->
 
     <div class="band-photo-container">
